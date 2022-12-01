@@ -37,5 +37,5 @@ int main() {
 
 	auto end = std::chrono::high_resolution_clock::now();
 
-	std::cout << "Time: " << std::chrono::duration_cast<std::chrono::microseconds>(end-start).count() << " us" << std::endl;
+	std::cout << "Time: " << std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count() << " ms" << std::endl;
 }
