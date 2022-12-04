@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <cstdint>
+#include <chrono>
 
 void choose_winner(std::int64_t p1, std::int64_t p2, std::uint64_t& score) {
 	score += p2 + 1;
@@ -35,6 +36,8 @@ int main(int argc, char** argv) {
 
 		return -1;
 	}
+	
+	auto ch_start = std::chrono::high_resolution_clock::now();
 
 	std::uint64_t part_1 = 0;
 	std::uint64_t part_2 = 0;
@@ -46,8 +49,11 @@ int main(int argc, char** argv) {
 		
 	}
 
+	auto ch_end = std::chrono::high_resolution_clock::now();
+
 	std::cout << "Part 1: " << part_1 << std::endl;
 	std::cout << "Part 2: " << part_2 << std::endl;
+	std::cout << "Time: " << std::chrono::duration_cast<std::chrono::microseconds>(ch_end - ch_start).count() << "us" << std::endl;
 
 	input.close();
 	return 0;
