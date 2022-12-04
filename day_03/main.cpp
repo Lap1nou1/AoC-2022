@@ -3,6 +3,7 @@
 #include <string>
 #include <cstdint>
 #include <array>
+#include <chrono>
 
 int main(int argc, char** argv) {
 	if (argc != 2) {
@@ -16,6 +17,8 @@ int main(int argc, char** argv) {
 		std::cout << "Le fichier \"" << argv[1] << "\" n'existe pas" << std::endl;
 		return -1;
 	}
+
+	auto ch_start = std::chrono::high_resolution_clock::now();
 
 	std::uint64_t part1 = 0;
 	std::uint64_t part2 = 0;
@@ -71,8 +74,11 @@ int main(int argc, char** argv) {
 		//std::cout << std::endl;
 	}
 
+	auto ch_end = std::chrono::high_resolution_clock::now();
+
 	std::cout << "Part 1: " << part1 << std::endl;
 	std::cout << "Part 2: " << part2 << std::endl;
+	std::cout << "Time: " << std::chrono::duration_cast<std::chrono::microseconds>(ch_end - ch_start).count() << "us" << std::endl;
 
 	return 0;
 }
